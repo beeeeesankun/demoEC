@@ -1,7 +1,7 @@
 <?php
-require_once '../env.php';
+require_once dirname(__FILE__) . '/../env.php';
 ini_set('display_errors', true);
-function connect()
+function dbc()
 {
     $host = DB_HOST;
     $user = DB_USER;
@@ -15,6 +15,7 @@ function connect()
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
       ]);
+        echo 'success';
         return $pdo;
     } catch (PDOException $e) {
         echo'接続失敗です！'.$e->getMessage();
