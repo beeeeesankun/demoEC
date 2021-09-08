@@ -1,4 +1,5 @@
 <?php
+
 require_once dirname(__FILE__) . '/../env.php';
 ini_set('display_errors', true);
 function dbc()

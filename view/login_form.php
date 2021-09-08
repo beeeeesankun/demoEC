@@ -49,8 +49,7 @@ if (isset($_GET['reload'])) {
   <form action="#" method="get" id="reload">
     <input type="hidden" name="reload" value="true">
   </form>
-  <a href="./signup_form.php">新規登録はこちら</a>
-  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script>
     if (window.performance.navigation.type === 1) {
       $('#reload').submit();

@@ -1,16 +1,16 @@
 <?php
-// session_start();
-// require_once '../function.php';
-// require_once '../classes/UserLogic.php';
+session_start();
+require_once '../functions/function.php';
+require_once '../classes/UserLogic.php';
 
-// $result = UserLogic::checkLogin();
-// if ($result) {
-//     header('location:mypage.php');
-//     return;
-// }
+$result = UserLogic::checkLogin();
+if ($result) {
+    header('location:mypage.php');
+    return;
+}
 
-// $login_err = isset($_SESSION['login_err']) ? $_SESSION['login_err'] : null;
-// unset($_SESSION['login_err']);
+$login_err = isset($_SESSION['login_err']) ? $_SESSION['login_err'] : null;
+unset($_SESSION['login_err']);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -27,7 +27,7 @@
   <?php if (isset($login_err)) :?>
   <span><?php echo $login_err ;?></span>
   <?php endif; ?>
-  <form action="register.php" method="POST">
+  <form action="../model/register.php" method="POST">
     <p>
       <label for="username">ユーザー名:</label>
       <input type="text" name="username">
@@ -47,7 +47,6 @@
     <input type="hidden" name="csrf_token" value="<?php echo h(setToken()) ?>">
     <button type="submit">新規登録</button>
   </form>
-  <a href="./login_form.php">既にアカウントをお持ちの方はこちら</a>
 </body>
 
 </html>

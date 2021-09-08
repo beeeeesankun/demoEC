@@ -10,9 +10,10 @@ class UserLogic
      */
     public static function createUser($userData)
     {
-        $sql = 'INSERT INTO users(name,email,password) VALUES(?,?,?)';
+        $sql = 'INSERT INTO employee_table(name,email,pass) VALUES(?,?,?)';
         $arr = [];
         $arr[] = $userData['username'];
+        $arr[] = $userData['email'];
         $arr[] = password_hash($userData['password'], PASSWORD_DEFAULT);
 
         try {
@@ -38,15 +39,15 @@ class UserLogic
 
             return $result = false;
         }
-        if (password_verify($password, $user['password'])) {
+        if (password_verify($password, $user['pass'])) {
             session_regenerate_id(true);
             $_SESSION['login_user'] = $user;
 
             return  $result = true;
+        } else {
+            $_SESSION['msg'] = 'パスワードが一致しません。';
+            return $result = false;
         }
-
-        $_SESSION['msg'] = 'パスワードが一致しません。';
-        return $result = false;
     }
 
     /** メールからユーザーを検索して取得
@@ -54,17 +55,14 @@ class UserLogic
      * @return array|bool $user|false
      */
     public static function getUserByEmail($email)
-    {//sqlの準備
-        //sqlの実行
-        //sqlの結果を返す
-        $sql = 'SELECT * FROM users WHERE email = ?';
+    {
+        $sql = 'SELECT * FROM employee_table WHERE email = ?';
         $arr = [];
         $arr[] = $email;
         try {
             $stmt = dbc()->prepare($sql);
             $stmt->execute($arr);
 
-            //sqlの結果を返す
             return $user = $stmt->fetch();
         } catch (\Exception $e) {
             return false;
