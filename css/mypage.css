@@ -12,7 +12,22 @@
 .alert.moved {
   top: 20px;
 }
-
 .wrapper {
+  margin: 160px auto;
+}
+.dashboard {
+  background: #eee;
+  margin: 0%;
+  padding: 40px;
+}
+.lists {
+  list-style: none;
   display: flex;
+  padding: 0 40px;
+}
+.lists-item {
+  padding: 20px;
+}
+.fas {
+  font-size: 100px;
 }
