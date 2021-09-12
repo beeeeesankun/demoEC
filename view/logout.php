@@ -31,9 +31,33 @@ UserLogic::logout();
 </head>
 
 <body>
-  <h2>ログアウト</h2>
-  <p>ログアウトしました。</p>
-  <a href="login_form.php">ログイン画面へ</a>
+  <div class="logout">
+    <h2>Logout</h2>
+    <p>ログアウトしました。</p>
+    <a href="login_form.php">ログイン画面へ</a>
+  </div>
 </body>
+<style>
+  body{
+    background: #eee;
+  }
+  .logout{
+    margin: 260px auto;
+    width: 45%;
+    background: #fff;
+    padding: 0 0 20px;
+  }
+  .logout > *{
+    padding: 0 40px;
+  }
+  .logout h2{
+    font-weight: 200;
+    background: #ff7052;
+    color: #fff;
+    padding: 15px;
+    font-size: 20px;
+  }
+
+</style>
 
 </html>
