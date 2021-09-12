@@ -38,7 +38,7 @@ $el = '<div id="alert" class="alert"><p>ログインしました</p></div>';
       <h4>ダッシュボード</h4>
       <ul class="lists">
         <?php if ($login_user['id'] == 1 && $login_user['name'] == 'master') :?>
-        <a href="">
+        <a href="./signup_form.php">
           <li class="lists-item">
             <div>
               <i class="fas fa-chalkboard-teacher"></i>

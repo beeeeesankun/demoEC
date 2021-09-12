@@ -2,9 +2,13 @@
 session_start();
 require_once '../functions/function.php';
 require_once '../classes/UserLogic.php';
-
+$login_user = $_SESSION['login_user'];
 $result = UserLogic::checkLogin();
-if ($result) {
+if (!$result) {
+    header('location:login_form.php');
+    return;
+}
+if (!$login_user['name'] == 'master' || $login_user['id'] > 1) {
     header('location:mypage.php');
     return;
 }
@@ -45,8 +49,9 @@ unset($_SESSION['login_err']);
       <input type="password" name="password_conf">
     </p>
     <input type="hidden" name="csrf_token" value="<?php echo h(setToken()) ?>">
-    <button type="submit">新規登録</button>
+    <button type="submit">登録</button>
   </form>
+  <a href="./mypage.php">マイページへ戻る</a>
 </body>
 
 </html>
