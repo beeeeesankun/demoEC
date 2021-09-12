@@ -38,19 +38,23 @@ $el = '<div id="alert" class="alert"><p>ログインしました</p></div>';
       <h4>ダッシュボード</h4>
       <ul class="lists">
         <?php if ($login_user['id'] == 1 && $login_user['name'] == 'master') :?>
-        <li class="lists-item">
-          <div>
-            <i class="fas fa-chalkboard-teacher"></i>
-          </div>
-          <p>アカウント管理</p>
-        </li>
+        <a href="">
+          <li class="lists-item">
+            <div>
+              <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <p>アカウント管理</p>
+          </li>
+        </a>
         <?php endif; ?>
-        <li class="lists-item">
-          <div>
-            <i class="fas fa-boxes"></i>
-          </div>
-          <p>商品管理</p>
-        </li>
+        <a href="">
+          <li class="lists-item">
+            <div>
+              <i class="fas fa-boxes"></i>
+            </div>
+            <p>商品管理</p>
+          </li>
+        </a>
       </ul>
     </section>
   </div>
