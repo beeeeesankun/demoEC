@@ -1,0 +1,18 @@
+.alert {
+  border-radius: 10px;
+  background: #eee;
+  padding: 0px 20px;
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top 1000ms ease;
+}
+
+.alert.moved {
+  top: 20px;
+}
+
+.wrapper {
+  display: flex;
+}
