@@ -40,31 +40,40 @@ $el = '<div id="alert" class="alert"><p>ログインしました</p></div>';
       <h4>ダッシュボード</h4>
       <ul class="lists">
         <?php if ($login_user['id'] == 1 && $login_user['name'] == 'master') :?>
-        <a href="./signup_form.php">
-          <li class="lists-item">
+        <li class="lists-item">
+          <a href="./">
             <div>
               <i class="mypage-icon fas fa-chalkboard-teacher"></i>
             </div>
             <p>アカウント管理</p>
-          </li>
-        </a>
+          </a>
+          <ul class="accounts">
+            <li class="account"><a href="./signup_form.php">アカウントの追加</a></li>
+            <li class="account"><a href="./signup_form.php">アカウントの削除</a></li>
+          </ul>
+        </li>
         <?php endif; ?>
-        <a href="">
-          <li class="lists-item">
+        <li class="lists-item">
+          <a href="./">
             <div>
               <i class="mypage-icon fas fa-boxes"></i>
             </div>
             <p>商品管理</p>
-          </li>
-        </a>
-        <a href="../public_html/">
-          <li class="lists-item">
+          </a>
+          <ul class="products">
+            <li class="product"><a href="">商品の追加</a></li>
+            <li class="product"><a href="">商品の編集</a></li>
+            <li class="product"><a href="">商品の削除</a></li>
+          </ul>
+        </li>
+        <li class="lists-item">
+          <a href="../public_html/">
             <div>
               <i class="mypage-icon fas fa-store-alt"></i>
             </div>
             <p>ショップを見る</p>
-          </li>
-        </a>
+          </a>
+        </li>
       </ul>
     </section>
   </div>
