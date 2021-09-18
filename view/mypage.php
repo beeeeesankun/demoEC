@@ -41,26 +41,22 @@ $el = '<div id="alert" class="alert"><p>ログインしました</p></div>';
       <ul class="lists">
         <?php if ($login_user['id'] == 1 && $login_user['name'] == 'master') :?>
         <li class="lists-item">
-          <a href="./">
-            <div>
-              <i class="mypage-icon fas fa-chalkboard-teacher"></i>
-            </div>
-            <p>アカウント管理</p>
-          </a>
-          <ul class="accounts">
+          <div>
+            <i class="mypage-icon fas fa-chalkboard-teacher"></i>
+          </div>
+          <p>アカウント管理</p>
+          <ul class="accounts child-lists">
             <li class="account"><a href="./signup_form.php">アカウントの追加</a></li>
-            <li class="account"><a href="./signup_form.php">アカウントの削除</a></li>
+            <li class="account"><a href="./remove_account.php">アカウントの削除</a></li>
           </ul>
         </li>
         <?php endif; ?>
         <li class="lists-item">
-          <a href="./">
-            <div>
-              <i class="mypage-icon fas fa-boxes"></i>
-            </div>
-            <p>商品管理</p>
-          </a>
-          <ul class="products">
+          <div>
+            <i class="mypage-icon fas fa-boxes"></i>
+          </div>
+          <p>商品管理</p>
+          <ul class="products child-lists">
             <li class="product"><a href="">商品の追加</a></li>
             <li class="product"><a href="">商品の編集</a></li>
             <li class="product"><a href="">商品の削除</a></li>
