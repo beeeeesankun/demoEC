@@ -1,5 +1,5 @@
 <header class="header">
-  <h2>マイページ</h2>
+  <h2>管理画面</h2>
   <div class="flex">
     <p>ようこそ<?php echo h($login_user['name'])?>さん</p>
     <form action="logout.php" method="POST" class="logout">
