@@ -100,17 +100,17 @@ body {
   display: block;
   color: #d4d4d4;
   left: 8px;
-  top: 5px;
-  font-size: 20px;
+  top: 0px;
+  font-size: 25px;
 }
 
-.input span img {
+.input span i {
   width: 25px;
   opacity: 1;
   transition: opacity 300ms ease;
 }
 
-.input input:focus + span img {
+.input input:focus + span i {
   opacity: 0;
 }
 
@@ -157,4 +157,19 @@ body {
   width: 80%;
   margin: 10px auto;
   font-size: 90%;
+}
+
+.sign-in {
+  position: relative;
+  top: 50%;
+  width: 250px;
+  display: table;
+  margin: 40px auto 0 auto;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.back {
+  color: #333;
+  text-align: right;
 }

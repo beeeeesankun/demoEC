@@ -43,7 +43,7 @@ $el = '<div id="alert" class="alert"><p>ログインしました</p></div>';
         <a href="./signup_form.php">
           <li class="lists-item">
             <div>
-              <i class="fas fa-chalkboard-teacher"></i>
+              <i class="mypage-icon fas fa-chalkboard-teacher"></i>
             </div>
             <p>アカウント管理</p>
           </li>
@@ -52,7 +52,7 @@ $el = '<div id="alert" class="alert"><p>ログインしました</p></div>';
         <a href="">
           <li class="lists-item">
             <div>
-              <i class="fas fa-boxes"></i>
+              <i class="mypage-icon fas fa-boxes"></i>
             </div>
             <p>商品管理</p>
           </li>
@@ -60,7 +60,7 @@ $el = '<div id="alert" class="alert"><p>ログインしました</p></div>';
         <a href="../public_html/">
           <li class="lists-item">
             <div>
-              <i class="fas fa-store-alt"></i>
+              <i class="mypage-icon fas fa-store-alt"></i>
             </div>
             <p>ショップを見る</p>
           </li>

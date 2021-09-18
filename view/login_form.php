@@ -2,7 +2,6 @@
 
 session_start();
 require_once '../classes/UserLogic.php';
-require_once '../config.php';
 $err = $_SESSION;
 
 $result = UserLogic::checkLogin();
@@ -22,7 +21,8 @@ if (isset($_GET['reload'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="<?php echo CSS.'login_form.css'?>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../css/login_form.css">
   <title>ログイン画面</title>
 </head>
 
@@ -32,11 +32,11 @@ if (isset($_GET['reload'])) {
       <legend class="legend">Login</legend>
       <div class="input">
         <input name="email" type="email" placeholder="Email" required />
-        <span><img src="../uploads/icon/email.png" alt=""></span>
+        <span><i class="far fa-envelope"></i></span>
       </div>
       <div class="input">
         <input name="password" type="password" placeholder="Password" required />
-        <span><img src="../uploads/icon/password.png" alt=""></span>
+        <span><i class="fas fa-unlock-alt"></i></span>
       </div>
       <?php if (isset($err['msg'])) :?>
       <div class="err-mes">
@@ -51,7 +51,7 @@ if (isset($_GET['reload'])) {
   <form action="#" method="get" id="reload">
     <input type="hidden" name="reload" value="true">
   </form>
-  <script src="<?php echo JS.'login_form.js'?>"></script>
+  <script src="../js/login_form.js"></script>
 </body>
 
 </html>

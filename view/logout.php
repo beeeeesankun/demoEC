@@ -2,6 +2,10 @@
 ini_set('display_errors', true);
 session_start();
 require_once '../classes/UserLogic.php';
+require_once '../classes/Message.php';
+$mes_h2 = 'Logout';
+$mes_p = 'ログアウトしました。';
+$mes_a = '<a href="login_form.php">ログイン画面へ</a>';
 
 if (!$logout = filter_input(INPUT_POST, 'logout')) {
     exit('不正なリクエストです。');
@@ -16,7 +20,6 @@ if (!$result) {
 
 //ログアウトする
 UserLogic::logout();
-
 ?>
 
 <!DOCTYPE html>
@@ -31,33 +34,7 @@ UserLogic::logout();
 </head>
 
 <body>
-  <div class="logout">
-    <h2>Logout</h2>
-    <p>ログアウトしました。</p>
-    <a href="login_form.php">ログイン画面へ</a>
-  </div>
+  <?php Message::putMes($mes_h2, $mes_p, $mes_a)?>
 </body>
-<style>
-  body{
-    background: #eee;
-  }
-  .logout{
-    margin: 260px auto;
-    width: 45%;
-    background: #fff;
-    padding: 0 0 20px;
-  }
-  .logout > *{
-    padding: 0 40px;
-  }
-  .logout h2{
-    font-weight: 200;
-    background: #ff7052;
-    color: #fff;
-    padding: 15px;
-    font-size: 20px;
-  }
-
-</style>
 
 </html>
