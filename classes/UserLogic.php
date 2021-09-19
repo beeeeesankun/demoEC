@@ -83,6 +83,22 @@ class UserLogic
         }
     }
 
+    /** 全ユーザー情報を取得
+     * @param null
+     * @return array|bool $usersList|false
+     */
+    public static function getUsersLists()
+    {
+        $sql = 'SELECT * FROM employee_table' ;
+
+        try {
+            $stmt = dbc()->prepare($sql);
+            $stmt->execute();
+            return $usersList = $stmt->fetchAll();
+        } catch (\Exception $e) {
+            return $result = false;
+        }
+    }
     /** メールからユーザーを検索して取得
      * @param string $email
      * @return array|bool $user|false
@@ -94,7 +110,7 @@ class UserLogic
         $arr[] = $email;
         try {
             $stmt = dbc()->prepare($sql);
-            $stmt->execute($arr);
+            $stmt->execute();
 
             return $user = $stmt->fetch();
         } catch (\Exception $e) {

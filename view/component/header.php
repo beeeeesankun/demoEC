@@ -1,10 +1,10 @@
 <header class="header">
-  <h2>管理画面</h2>
+  <?php echo '<h2>' . $h2Txt . '</h2>'; ?>
   <div class="flex">
     <p>ようこそ<?php echo h($login_user['name'])?>さん</p>
     <form action="logout.php" method="POST" class="logout">
       <input type="submit" name="logout" value="ログアウト" class="button">
-  </form>
+    </form>
   </div>
 </header>
 <style>
@@ -16,13 +16,16 @@
     color: #fff;
     padding: 0 20px;
   }
-  .flex{
+
+  .flex {
     display: flex;
     align-items: center;
   }
-  .logout{
+
+  .logout {
     margin: 0 0 0 20px;
   }
+
   .button {
     display: inline-block;
     border-radius: 5%;

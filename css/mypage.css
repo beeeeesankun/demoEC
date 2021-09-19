@@ -63,3 +63,17 @@ a:active {
 .child-lists > * {
   padding: 10px;
 }
+
+.user-lists {
+  border-spacing: 20px 30px;
+  padding: 10px 20px;
+}
+.user-lists th {
+  text-align: left;
+}
+.user-lists td:last-child {
+  text-align: center;
+}
+.back {
+  text-align: right;
+}
