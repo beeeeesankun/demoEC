@@ -28,7 +28,7 @@
           <span><i class="fas fa-unlock-alt"></i></span>
         </div>
         <div class="input back">
-          <a href="./mypage.php">Back</a>
+          <a href="./mypage.php">キャンセル</a>
         </div>
         <button type="submit" class="submit">
           <div>

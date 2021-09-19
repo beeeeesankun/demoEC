@@ -53,7 +53,7 @@ unset($_SESSION['login_err']);
           <span><i class="fas fa-unlock"></i></span>
         </div>
         <div class="input back">
-          <a href="./mypage.php">Back</a>
+          <a href="./mypage.php">キャンセル</a>
         </div>
         <input type="hidden" name="csrf_token" value="<?php echo h(setToken()) ?>">
         <button type="submit" class="submit">

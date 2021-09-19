@@ -1,6 +1,13 @@
 <?php
 class Message
 {
+    /**
+    * フォーマットメッセージを表示
+    * @param string $mes_h2
+    * @param string $mes_p
+    * @param string $mes_a
+    * @return void
+    */
     public static function putMes($mes_h2, $mes_p, $mes_a)
     {
         $mes_format = <<< EOM
