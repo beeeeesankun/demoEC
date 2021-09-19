@@ -26,20 +26,35 @@ class UserLogic
     }
     /**
      *  ユーザーを削除する
-     * @param array $userData
+     * @param string $username
+     * @param string $email
+     * @param string $password
      * @return bool $result
      */
     public static function removeUser($username, $email, $password)
     {
         $registeredUser = self::getUserByEmail($email);
-        // var_dump($registeredUser['name'] == $username);
-        // echo $registeredUser['name'];
-        echo $username;
-        // var_dump(password_verify($password, $registeredUser['pass']));
-        if ($registeredUser['name'] == $username && password_verify($password, $registeredUser['pass'])) {
-            echo 'y';
+        $id = $registeredUser['id'];
+        var_dump($id);
+
+        if ($registeredUser['name'] == 'master' || $registeredUser['id'] == 1) {
+            echo 'masterアカウントは削除できません。';
         } else {
-            echo 'n';
+            if ($registeredUser['name'] == $username && password_verify($password, $registeredUser['pass'])) {
+                try {
+                    $sql = 'DELETE FROM employee_table WHERE id = :id';
+                    $stmt = dbc()->prepare($sql);
+                    $params = [':id'=>$id];
+                    $result = $stmt->execute($params);
+                    echo  'success';
+                    return $result;
+                } catch (\Exception $e) {
+                    return $result = false;
+                    echo 'Field! Exception';
+                }
+            } else {
+                echo 'Field!';
+            }
         }
     }
 
