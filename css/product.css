@@ -109,7 +109,7 @@ body {
 .input input:focus + span i {
   opacity: 0;
 }
-
+.input select,
 .input input {
   width: 75%;
   padding: 10px 5px;
@@ -156,4 +156,10 @@ body {
 .back {
   color: #999;
   text-align: right;
+}
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  -moz-appearance: textfield;
 }

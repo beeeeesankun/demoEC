@@ -27,7 +27,7 @@ if (!$result) {
     <?php if (isset($login_err)) :?>
     <span><?php echo $login_err ;?></span>
     <?php endif; ?>
-    <form class="sign-in" action="../model/register.php" method="POST">
+    <form class="sign-in" action="../model/insert_product.php" method="POST">
       <fieldset>
         <legend class="legend">商品登録</legend>
         <div class="input">
@@ -36,11 +36,11 @@ if (!$result) {
         </div>
         <div class="input">
           <label for="price">価格</label>
-          <input name="price" type="text" placeholder="価格" required="">
+          <input name="price" type="number" placeholder="価格" required="" min="0" class="no-spin">
         </div>
         <div class="input">
           <label for="stock">在庫数</label>
-          <input name="stock" type="text" placeholder="在庫数" required="">
+          <input name="stock" type="number" placeholder="在庫数" required="" min="0" max="50">
         </div>
         <div class="input">
           <label for="pass">商品画像</label>
@@ -48,7 +48,7 @@ if (!$result) {
         </div>
         <div class="input">
           <label for="productName">商品カテゴリー</label>
-          <select name="select-box">
+          <select name="select-box" required>
             <option value="アウター">アウター</option>
             <option value="ボトムス">ボトムス</option>
             <option value="セーター">セーター</option>
@@ -59,7 +59,7 @@ if (!$result) {
         </div>
         <div class="input">
           <label for="productName">対象カテゴリー</label>
-          <select name="select-box">
+          <select name="select-box" required>
             <option value="woman">woman</option>
             <option value="man">man</option>
             <option value="kids">kids</option>
