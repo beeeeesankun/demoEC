@@ -29,16 +29,16 @@ class UserLogic
      * @param string $username
      * @param string $email
      * @param string $password
-     * @return bool $result
+     * @return bool $result | string $err_mes
      */
     public static function removeUser($username, $email, $password)
     {
         $registeredUser = self::getUserByEmail($email);
         $id = $registeredUser['id'];
-        var_dump($id);
 
         if ($registeredUser['name'] == 'master' || $registeredUser['id'] == 1) {
-            echo 'masterアカウントは削除できません。';
+            $err_mes = 'masterアカウントは削除できません。';
+            return $err_mes;
         } else {
             if ($registeredUser['name'] == $username && password_verify($password, $registeredUser['pass'])) {
                 try {
@@ -46,14 +46,14 @@ class UserLogic
                     $stmt = dbc()->prepare($sql);
                     $params = [':id'=>$id];
                     $result = $stmt->execute($params);
-                    echo  'success';
                     return $result;
                 } catch (\Exception $e) {
-                    return $result = false;
-                    echo 'Field! Exception';
+                    $err_mes = '正常に通信が完了しませんでした。再度お試しください。';
+                    return $err_mes;
                 }
             } else {
-                echo 'Field!';
+                $err_mes = '正しいユーザー情報をご確認ください。';
+                return $err_mes;
             }
         }
     }

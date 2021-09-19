@@ -6,9 +6,10 @@ require_once '../classes/Message.php';
 $err_mes = null;
 
 $mes_h2 = 'Success';
-$mes_p = '登録完了しました。';
-$mes_a = '<a href="../view/signup_form.php">戻る</a>';
 $err_mes_h2 = 'Failed';
+$mes_p = '登録完了しました。';
+$mes_a = '<a href="../view/mypage.php">戻る</a>';
+$err_mes_a = '<a href="../view/signup_form.php">戻る</a>';
 
 $token = filter_input(INPUT_POST, 'csrf_token');
 // トークンが空||不一致で処理を中止
@@ -36,6 +37,8 @@ if (!isset($err_mes)) {
         $err_mes .= '・登録に失敗しました。';
     }
 }
+$titleTxt = !isset($err_mes) ? 'Success' : 'Failed';
+
 ?>
 
 <!DOCTYPE html>
@@ -45,13 +48,13 @@ if (!isset($err_mes)) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>登録完了</title>
+  <?php echo '<title>' . $titleTxt . '</title>'; ?>
 </head>
 
 <body>
 
   <?php if (isset($err_mes)):?>
-  <?php Message::putMes($err_mes_h2, $err_mes, $mes_a)?>
+  <?php Message::putMes($err_mes_h2, $err_mes, $err_mes_a)?>
   <?php else:?>
   <?php Message::putMes($mes_h2, $mes_p, $mes_a)?>
   <?php endif ?>
