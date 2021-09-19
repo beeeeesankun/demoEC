@@ -46,8 +46,9 @@ $el = '<div id="alert" class="alert"><p>ログインしました</p></div>';
           </div>
           <p>アカウント管理</p>
           <ul class="accounts child-lists">
+            <li class="account"><a href="./account_lists.php">アカウント一覧</a></li>
             <li class="account"><a href="./signup_form.php">アカウントの追加</a></li>
-            <li class="account"><a href="./remove_account.php">アカウントの削除</a></li>
+            <li class="account"><a href="./remove_account_form.php">アカウントの削除</a></li>
           </ul>
         </li>
         <?php endif; ?>

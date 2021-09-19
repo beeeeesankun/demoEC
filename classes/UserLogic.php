@@ -24,6 +24,24 @@ class UserLogic
             return $result = false;
         }
     }
+    /**
+     *  ユーザーを削除する
+     * @param array $userData
+     * @return bool $result
+     */
+    public static function removeUser($username, $email, $password)
+    {
+        $registeredUser = self::getUserByEmail($email);
+        // var_dump($registeredUser['name'] == $username);
+        // echo $registeredUser['name'];
+        echo $username;
+        // var_dump(password_verify($password, $registeredUser['pass']));
+        if ($registeredUser['name'] == $username && password_verify($password, $registeredUser['pass'])) {
+            echo 'y';
+        } else {
+            echo 'n';
+        }
+    }
 
     /** ログイン機能
      * @param string $email

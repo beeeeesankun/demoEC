@@ -12,15 +12,19 @@
 
 <body>
   <div class="wrapper">
-    <form class="sign-in" action="../model/register.php" method="POST">
+    <form class="sign-in" action="../model/remove_account.php" method="POST">
       <fieldset>
-        <legend class="legend">アカウント確認</legend>
+        <legend class="legend">削除アカウントの確認</legend>
         <div class="input">
-          <input name="username" type="text" placeholder="Name" required="">
+          <input name="removeUser" type="text" placeholder="Deleted Name" required="">
           <span><i class="fas fa-user"></i></span>
         </div>
         <div class="input">
-          <input name="password" type="password" placeholder="Password" required="">
+          <input name="email" type="email" placeholder="Registered Email" required="">
+          <span><i class="far fa-envelope"></i></span>
+        </div>
+        <div class="input">
+          <input name="password" type="password" placeholder="Registered Password" required="">
           <span><i class="fas fa-unlock-alt"></i></span>
         </div>
         <div class="input back">
