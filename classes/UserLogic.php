@@ -110,7 +110,7 @@ class UserLogic
         $arr[] = $email;
         try {
             $stmt = dbc()->prepare($sql);
-            $stmt->execute();
+            $stmt->execute($arr);
 
             return $user = $stmt->fetch();
         } catch (\Exception $e) {
