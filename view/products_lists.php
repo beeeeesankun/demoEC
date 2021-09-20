@@ -2,11 +2,15 @@
 ini_set('display_errors', true);
 require_once '../functions/function.php';
 require_once '../classes/Product.php';
+require_once '../classes/UserLogic.php';
 
 session_start();
+if (!UserLogic::checkLogin()) {
+    kick();
+}
+
 $h2Txt = '商品管理';
 $login_user = $_SESSION['login_user'];
-
 Product::getAllProducts();
 ?>
 <!DOCTYPE html>

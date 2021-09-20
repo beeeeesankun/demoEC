@@ -3,6 +3,11 @@ ini_set('display_errors', true);
 session_start();
 require_once '../classes/UserLogic.php';
 require_once '../classes/Message.php';
+require_once '../functions/function.php';
+if (!UserLogic::checkLogin()) {
+    kick();
+}
+
 $mes_h2 = 'Logout';
 $mes_p = 'ログアウトしました。';
 $mes_a = '<a href="login_form.php">ログイン画面へ</a>';

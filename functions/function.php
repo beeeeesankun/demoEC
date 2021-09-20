@@ -22,3 +22,15 @@ function setToken()
     $_SESSION['csrf_token'] = $csrf_token;
     return $csrf_token;
 }
+
+/**
+ * 呼ばれたら弾く
+ * @param void
+ * @return void
+ */
+function kick()
+{
+    $_SESSION['msg'] = '不正なリクエストです。<br>ユーザー登録をしてログインしてください。';
+    header('location:login_form.php');
+    return;
+}

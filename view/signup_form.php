@@ -3,11 +3,10 @@ session_start();
 require_once '../functions/function.php';
 require_once '../classes/UserLogic.php';
 $login_user = $_SESSION['login_user'];
-$result = UserLogic::checkLogin();
-if (!$result) {
-    header('location:login_form.php');
-    return;
+if (!UserLogic::checkLogin()) {
+    kick();
 }
+
 if (!$login_user['name'] == 'master' || $login_user['id'] > 1) {
     header('location:mypage.php');
     return;

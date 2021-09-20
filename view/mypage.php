@@ -5,12 +5,8 @@ require_once '../classes/UserLogic.php';
 require_once '../functions/function.php';
 
 //ログインしているが判定し。していなかったら新規登録画面へ戻す
-$result = UserLogic::checkLogin();
-
-if (!$result) {
-    $_SESSION['login_err'] = 'ユーザー登録をしてログインしてください。';
-    header('location:signup_form.php');
-    return;
+if (!UserLogic::checkLogin()) {
+    kick();
 }
 
 if (!isset($_SESSION['login_counter'])) {
