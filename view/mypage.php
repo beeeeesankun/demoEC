@@ -65,7 +65,7 @@ $h2Txt = '管理画面';
             <p>商品管理</p>
             <ul class="products child-lists">
               <li class="product"><a href="./products_lists.php">商品一覧</a></li>
-              <li class="product"><a href="./add_product_form.php">商品の追加</a></li>
+              <li class="product"><a href="./insert_product_form.php">商品の追加</a></li>
               <li class="product"><a href="./update_product_form.php">商品の編集</a></li>
               <li class="product"><a href="./remove_product_form.php">商品の削除</a></li>
             </ul>
