@@ -27,28 +27,29 @@ if (!$result) {
     <?php if (isset($login_err)) :?>
     <span><?php echo $login_err ;?></span>
     <?php endif; ?>
-    <form class="sign-in" action="../model/insert_product.php" method="POST">
+    <form enctype="multipart/form-data" class="sign-in" action="../model/insert_product.php" method="POST">
       <fieldset>
         <legend class="legend">商品登録</legend>
         <div class="input">
-          <label for="productName">商品名</label>
-          <input name="productName" type="text" placeholder="商品名" required="">
+          <label for="product[name]">商品名</label>
+          <input name="product[name]" type="text" placeholder="商品名" required="">
         </div>
         <div class="input">
-          <label for="price">価格</label>
-          <input name="price" type="number" placeholder="価格" required="" min="0" class="no-spin">
+          <label for="product[price]">価格</label>
+          <input name="product[price]" type="number" placeholder="価格" required="" min="0" class="no-spin">
         </div>
         <div class="input">
-          <label for="stock">在庫数</label>
-          <input name="stock" type="number" placeholder="在庫数" required="" min="0" max="50">
+          <label for="product[stock]">在庫数</label>
+          <input name="product[stock]" type="number" placeholder="在庫数" required="" min="0" max="50">
         </div>
         <div class="input">
-          <label for="pass">商品画像</label>
-          <input name="pass" type="file" placeholder="商品画像" required="">
+          <label for="product[image]">商品画像</label>
+          <input name="product[image]" type="file" placeholder="商品画像" accept="image/*" required="">
+          <!-- <input name="MAX_FILE_SIZE" type="hidden" value="1048576" /> -->
         </div>
         <div class="input">
-          <label for="productName">商品カテゴリー</label>
-          <select name="select-box" required>
+          <label for="product[category]">商品カテゴリー</label>
+          <select name="product[category]" required>
             <option value="アウター">アウター</option>
             <option value="ボトムス">ボトムス</option>
             <option value="セーター">セーター</option>
@@ -58,8 +59,8 @@ if (!$result) {
           </select>
         </div>
         <div class="input">
-          <label for="productName">対象カテゴリー</label>
-          <select name="select-box" required>
+          <label for="product[gender]">対象カテゴリー</label>
+          <select name="product[gender]" required>
             <option value="woman">woman</option>
             <option value="man">man</option>
             <option value="kids">kids</option>
