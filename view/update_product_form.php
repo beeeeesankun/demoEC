@@ -7,3 +7,10 @@ require_once '../functions/function.php';
 if (!UserLogic::checkLogin()) {
     kick();
 }
+
+
+$id =  filter_input(INPUT_POST, 'id');
+
+echo '<pre>';
+var_dump($id);
+echo '</pre>';

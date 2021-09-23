@@ -1,4 +1,5 @@
 <?php
+require_once '../functions/dbConnect.php';
 class Product
 {
     /**
@@ -8,10 +9,15 @@ class Product
     */
     public static function getAllProducts()
     {
-        // $sql = 'SELECT * FROM products_table';
-        // $stmt = dbc()->query($sql);
-        // $products = $stmt->fetchAll();
-        return $products = false;
+        $sql = 'SELECT * FROM products_table';
+        try {
+            $stmt = dbc()->query($sql);
+            $products = $stmt->fetchAll();
+            return $products;
+        } catch (\Exception $e) {
+            echo $e ->getMessage();
+            return $result = false;
+        }
     }
     /**
     * 商品情報の登録
@@ -20,7 +26,25 @@ class Product
     */
     public static function insertProduct($product)
     {
-        echo 'called';
-        return $result = false;
+        $sql = 'INSERT INTO products_table(name,price,stock,pass,category,gender) VALUE (?,?,?,?,?,?)';
+        $arr = [];
+        $arr[] = $product['name'];
+        $arr[] = $product['price'];
+        $arr[] = $product['stock'];
+        $arr[] = $product['pass'];
+        $arr[] = $product['category'];
+        $arr[] = $product['gender'];
+
+        try {
+            $stmt = dbc()->prepare($sql);
+            $result = $stmt->execute($arr);
+            return $result;
+        } catch (\Exception $e) {
+            echo $e ->getMessage();
+            return $result = false;
+        }
+
+
+        return $result;
     }
 }

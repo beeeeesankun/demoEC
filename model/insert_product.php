@@ -11,12 +11,10 @@ $err_mes_a = '<a href="../view/insert_product_form.php">戻る</a>';
 
 $token = filter_input(INPUT_POST, 'csrf_token');
 // トークンが空||不一致で処理を中止
-// if (!isset($_SESSION['csrf_token']) || $token !== $_SESSION['csrf_token']) {
-//     exit('不正なリクエストです。');
-// }
-// unset($_SESSION['csrf_token']);
-
-
+if (!isset($_SESSION['csrf_token']) || $token !== $_SESSION['csrf_token']) {
+    exit('不正なリクエストです。');
+}
+unset($_SESSION['csrf_token']);
 
 $err_mes = null;
 $populating = [];
@@ -56,23 +54,12 @@ if (isset($err_mes)) {
 }
 $titleTxt = !isset($err_mes) ? 'Success' : 'Failed';
 
-echo '<pre>';
-var_dump($populating);
-echo '</pre>';
-echo '<pre>';
-var_dump($product['price']);
-echo '</pre>';
 
-// $result = Product::insertProduct($populating);
-// if (!$result) {
-//     $err_mes .= '・登録に失敗しました。';
-// }
-if (is_uploaded_file($tmp_path) && move_uploaded_file($tmp_path, $save_path) && Product::insertProduct($populating)) {
-    // $result = Product::insertProduct($populating);
-    // $result ? $mes_p = '・登録完了しました。': $err_mes .= '・登録に失敗しました。';
-    $mes_p = '・登録完了しました。';
+if (is_uploaded_file($tmp_path) && move_uploaded_file($tmp_path, $save_path)) {
+    $result = Product::insertProduct($populating);
+    $result ? $mes_p = '・登録完了しました。': $err_mes .= '・登録に失敗しました。';
 } else {
-    $err_mes .= '・保存に失敗しました。';
+    $err_mes .= '・画像の保存に失敗しました。';
 }
 ?>
 

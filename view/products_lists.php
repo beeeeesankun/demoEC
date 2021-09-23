@@ -11,7 +11,9 @@ if (!UserLogic::checkLogin()) {
 
 $h2Txt = '商品管理';
 $login_user = $_SESSION['login_user'];
-Product::getAllProducts();
+$products = Product::getAllProducts();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -32,31 +34,51 @@ Product::getAllProducts();
       <h3>商品一覧</h3>
       <table class="user-lists">
         <tr>
+          <th>商品画像</th>
           <th>商品名</th>
           <th>価格</th>
           <th>在庫数</th>
           <th>カテゴリー</th>
-          <th>属性</th>
+          <th>対象カテゴリー</th>
           <th>最終更新日</th>
         </tr>
-        <!-- <?php foreach ($users as $user): ?>
+        <?php foreach ($products as $product): ?>
         <tr>
           <td>
-            <?php echo "$user[name]"; ?>
+            <div class='list-img'>
+              <img src='<?php echo "$product[pass]"; ?>' alt=''>
+            </div>
+          </td>
+          <td><?php echo "$product[name]";?>
+          </td>
+          <td><?php
+            $num = number_format($product['price']);
+            $num .='円';
+            echo $num;
+            ?>
+          </td>
+          <td><?php echo "$product[stock]";?>
+          </td>
+          <td><?php echo "$product[category]";?>
+          </td>
+          <td><?php echo "$product[gender]";?>
+          </td>
+          <td><?php echo "$product[update_time]";?>
           </td>
           <td>
-            <?php echo "$user[email]"; ?>
+            <form action="./update_product_form.php" method="post">
+              <input type="hidden" name="id" value="<?php echo "$product[id]"?>">
+              <button type="submit"><i class="far fa-edit"></i></button>
+            </form>
           </td>
           <td>
-            <?php echo "$user[create_time]"; ?>
-          </td>
-          <td>
-            <?php if ($user['name'] == 'master'): ?>
-            <i class="fas fa-check"></i>
-            <?php endif; ?>
+            <form action="./remove_product_form.php" method="post">
+              <input type="hidden" name="id" value="<?php echo "$product[id]"?>">
+              <button type="submit"><i class="far fa-trash-alt"></i></button>
+            </form>
           </td>
         </tr>
-        <?php endforeach; ?> -->
+        <?php endforeach; ?>
       </table>
       <div class="back"><a href="./mypage.php">戻る</a></div>
     </section>

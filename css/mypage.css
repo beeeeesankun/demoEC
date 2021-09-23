@@ -5,6 +5,9 @@ a:active {
   color: inherit;
   text-decoration: none;
 }
+img {
+  max-width: 100%;
+}
 .alert {
   border-radius: 10px;
   background: #eee;
@@ -76,4 +79,7 @@ a:active {
 }
 .back {
   text-align: right;
+}
+.list-img {
+  max-width: 120px;
 }
