@@ -32,24 +32,25 @@ if (!$result) {
         <legend class="legend">商品登録</legend>
         <div class="input">
           <label for="product[name]">商品名</label>
-          <input name="product[name]" type="text" placeholder="商品名" required="">
+          <input name="product[name]" type="text" placeholder="商品名">
         </div>
         <div class="input">
           <label for="product[price]">価格</label>
-          <input name="product[price]" type="number" placeholder="価格" required="" min="0" class="no-spin">
+          <input name="product[price]" type="text" placeholder="価格" min="0" class="half">
         </div>
         <div class="input">
           <label for="product[stock]">在庫数</label>
-          <input name="product[stock]" type="number" placeholder="在庫数" required="" min="0" max="50">
+          <input name="product[stock]" type="text" placeholder="在庫数" min="0" max="50" class="half">
         </div>
         <div class="input">
-          <label for="product[image]">商品画像</label>
-          <input name="product[image]" type="file" placeholder="商品画像" accept="image/*" required="">
+          <label for="image">商品画像</label>
+          <input name="image" type="file" placeholder="商品画像" accept="image/*">
           <!-- <input name="MAX_FILE_SIZE" type="hidden" value="1048576" /> -->
         </div>
         <div class="input">
           <label for="product[category]">商品カテゴリー</label>
-          <select name="product[category]" required>
+          <select name="product[category]">
+            <option hidden value="">商品カテゴリーを選択してください</option>
             <option value="アウター">アウター</option>
             <option value="ボトムス">ボトムス</option>
             <option value="セーター">セーター</option>
@@ -60,10 +61,11 @@ if (!$result) {
         </div>
         <div class="input">
           <label for="product[gender]">対象カテゴリー</label>
-          <select name="product[gender]" required>
-            <option value="woman">woman</option>
-            <option value="man">man</option>
-            <option value="kids">kids</option>
+          <select name="product[gender]">
+            <option hidden value="">対象カテゴリーを選択してください</option>
+            <option value="woman">Woman</option>
+            <option value="man">Man</option>
+            <option value="kids">Kids</option>
           </select>
         </div>
         <div class="input">
@@ -73,11 +75,10 @@ if (!$result) {
           <button type="submit" class="submit">登録する</button>
         </div>
         <input type="hidden" name="csrf_token" value="<?php echo h(setToken()) ?>">
-
       </fieldset>
     </form>
-
   </div>
+  <script src="../js/transform_half.js"></script>
 </body>
 
 </html>

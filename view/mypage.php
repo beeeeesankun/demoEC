@@ -84,7 +84,7 @@ $h2Txt = '管理画面';
   </div>
   <?php if ($_SESSION['login_counter'] < 2) :?>
   <?php echo $el; ?>
-  <script src="../js/mypage.js"></script>
+  <script src="../js/control_pop.js"></script>
   <?php endif; ?>
 </body>
 

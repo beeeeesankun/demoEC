@@ -20,6 +20,6 @@ class Product
     */
     public static function insertProduct($product)
     {
-        return $result = false;
+        return $result = true;
     }
 }

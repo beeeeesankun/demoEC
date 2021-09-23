@@ -7,7 +7,7 @@ $mes_h2 = 'Success';
 $err_mes_h2 = 'Failed';
 $mes_p = '登録完了しました。';
 $mes_a = '<a href="../view/mypage.php">戻る</a>';
-$err_mes_a = '<a href="../view/signup_form.php">戻る</a>';
+$err_mes_a = '<a href="../view/insert_product_form.php">戻る</a>';
 
 $token = filter_input(INPUT_POST, 'csrf_token');
 // トークンが空||不一致で処理を中止
@@ -16,36 +16,27 @@ $token = filter_input(INPUT_POST, 'csrf_token');
 // }
 // unset($_SESSION['csrf_token']);
 
+
+
 $err_mes = null;
+$populating = [];
+
 $product = $_POST['product'];
-$file = $_FILES['product'];
+
+$file = $_FILES['image'];
 $filename = basename($file['name']);
 $tmp_path = $file['tmp_name'];
 $file_err = $file['error'];
 $file_size = $file['size'];
-$upload_dir = 'images/';
-$save_filename = $filename . date('YmdHis');
-$save_path =  $upload_dir.$save_filename;
+$upload_dir = '../uploads/products-img/';
+$save_path =  $upload_dir.$filename;
 $allow_extension = ['jpg','jpeg','png'];
 $file_extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 
-if (!isset($product['name'])) {
-    $err_mes .= '・商品名を入力してください。<br><br>';
-}
-if (!isset($product['price'])) {
-    $err_mes .= '・価格を入力してください。<br><br>';
-}
-if (!isset($product['stock'])) {
-    $err_mes .= '・在庫数を入力してください。<br><br>';
-}
-if (!isset($product)) {
+
+//画像のバリデーション
+if (!isset($file)) {
     $err_mes .= '・画像を選択してください。<br><br>';
-}
-if (!isset($product['category'])) {
-    $err_mes .= '・商品カテゴリーを入力してください。<br><br>';
-}
-if (!isset($product['gender'])) {
-    $err_mes .= '・対象カテゴリーを入力してください。<br><br>';
 }
 if ($file_size > 1048576  || $file_err == 2) {
     $err_mes .= '・ファイルサイズは1MB未満にしてください<br><br>';
@@ -53,30 +44,33 @@ if ($file_size > 1048576  || $file_err == 2) {
 if (!in_array($file_extension, $allow_extension)) {
     $err_mes .=  '・画像ファイルを添付してください。<br><br>';
 }
+$populating['pass'] = $save_path;
+
+//商品情報のバリデーション
+strlen($product['name']) > 0 ? $populating['name'] = $product['name'] : $err_mes .= '・商品名を入力してください。<br><br>' ;
+strlen($product['price']) > 0 ? $populating['price'] = intval($product['price']) : $err_mes .= '・価格を入力してください。<br><br>' ;
+strlen($product['stock']) > 0 ? $populating['stock'] = intval($product['stock']) : $err_mes .=  '・在庫数を入力してください。<br><br>';
+strlen($product['category']) > 0 ? $populating['category'] = $product['category'] : $err_mes .=  '・商品カテゴリーを選択してください。<br><br>';
+strlen($product['gender']) > 0 ? $populating['gender'] = $product['gender'] : $err_mes .=  '・対象カテゴリーを選択してください。<br><br>';
+
 if (isset($err_mes)) {
     $err_mes .= '・商品情報を正しく入力してください。<br><br>';
 }
+$titleTxt = !isset($err_mes) ? 'Success' : 'Failed';
 
 echo '<pre>';
-var_dump($file);
+var_dump($populating);
 echo '</pre>';
-echo '<pre>';
-var_dump($file['name']);
-echo '</pre>';
-echo '<pre>';
-var_dump($filename);
-echo '</pre>';
-$populating=0;
+
 
 // $result = Product::insertProduct($populating);
 // if (!$result) {
 //     $err_mes .= '・登録に失敗しました。';
 // }
-$titleTxt = !isset($err_mes) ? 'Success' : 'Failed';
 
 ?>
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -95,4 +89,4 @@ $titleTxt = !isset($err_mes) ? 'Success' : 'Failed';
   <?php endif ?>
 </body>
 
-</html> -->
+</html>

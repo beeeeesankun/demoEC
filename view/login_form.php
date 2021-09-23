@@ -51,7 +51,7 @@ if (isset($_GET['reload'])) {
   <form action="#" method="get" id="reload">
     <input type="hidden" name="reload" value="true">
   </form>
-  <script src="../js/login_form.js"></script>
+  <script src="../js/check_reload.js"></script>
 </body>
 
 </html>
