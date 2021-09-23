@@ -43,8 +43,25 @@ class Product
             echo $e ->getMessage();
             return $result = false;
         }
-
-
         return $result;
+    }
+
+    /** idから商品を検索して取得
+     * @param string $id
+     * @return array|bool $product|false
+     */
+    public static function getProductById($id)
+    {
+        $sql = 'SELECT * FROM products_table WHERE id = ?';
+        $arr = [];
+        $arr[] = $id;
+        try {
+            $stmt = dbc()->prepare($sql);
+            $stmt->execute($arr);
+
+            return $user = $stmt->fetch();
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }
