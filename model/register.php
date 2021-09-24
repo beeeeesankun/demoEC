@@ -34,11 +34,9 @@ if ($password!==$password_conf = filter_input(INPUT_POST, 'password_conf')) {
 if (!isset($err_mes)) {
     $hasCreated = UserLogic::createUser($_POST);
     if (!$hasCreated) {
-        $err_mes .= '・登録に失敗しました。';
+        $err_mes .= '・登録に失敗しました。<br>管理者へお問い合わせください。';
     }
 }
-$titleTxt = !isset($err_mes) ? 'Success' : 'Failed';
-
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +46,10 @@ $titleTxt = !isset($err_mes) ? 'Success' : 'Failed';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <?php echo '<title>' . $titleTxt . '</title>'; ?>
+  <?php
+    $titleTxt = !isset($err_mes) ? 'Success' : 'Failed';
+    echo '<title>' . $titleTxt . '</title>';
+  ?>
 </head>
 
 <body>

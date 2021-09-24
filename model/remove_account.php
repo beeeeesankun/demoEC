@@ -14,8 +14,6 @@ $err_mes_h2 = 'Failed';
 $mes_p = '削除が完了しました。';
 $mes_a = '<a href="../view/mypage.php">戻る</a>';
 $err_mes_a = '<a href="../view/remove_account_form.php">戻る</a>';
-
-$titleTxt = !is_bool($result)?'Failed':'Success';
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +23,10 @@ $titleTxt = !is_bool($result)?'Failed':'Success';
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <?php echo '<title>' . $titleTxt . '</title>'; ?>
+  <?php
+    $titleTxt = !is_bool($result)?'Failed':'Success';
+    echo '<title>' . $titleTxt . '</title>';
+  ?>
 </head>
 
 <body>

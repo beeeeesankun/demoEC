@@ -10,10 +10,6 @@ if (!UserLogic::checkLogin()) {
 }
 $id =  filter_input(INPUT_POST, 'id');
 $product = Product::getProductById($id);
-
-echo '<pre>';
-var_dump($product);
-echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -39,6 +35,7 @@ echo '</pre>';
         <div class="input">
           <label for="image">商品画像</label>
           <input id="newest" class='img-file' name="image" type="file" placeholder="画像" accept="image/*">
+          <input name="MAX_FILE_SIZE" type="hidden" value="1048576" />
           <div id="existing" class='img-wrap'>
             <img src='<?php echo $product['pass'] ?>' alt=''>
             <i id="cross" class="far fa-times-circle"></i>

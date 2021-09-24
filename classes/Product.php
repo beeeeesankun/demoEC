@@ -71,6 +71,6 @@ class Product
     */
     public static function updateProduct($product)
     {
-        return $result = false;
+        return $result = true;
     }
 }
