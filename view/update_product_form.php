@@ -10,6 +10,10 @@ if (!UserLogic::checkLogin()) {
 }
 $id =  filter_input(INPUT_POST, 'id');
 $product = Product::getProductById($id);
+
+echo '<pre>';
+var_dump($product);
+echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -31,26 +35,31 @@ $product = Product::getProductById($id);
     <form enctype="multipart/form-data" class="sign-in" action="../model/update_product.php" method="POST">
       <fieldset>
         <legend class="legend">商品編集</legend>
+        <input name="product[id]" type="hidden" value="<?php echo $id ?>">
         <div class="input">
-          <div class='img-wrap'>
+          <label for="image">商品画像</label>
+          <input id="newest" class='img-file' name="image" type="file" placeholder="画像" accept="image/*">
+          <div id="existing" class='img-wrap'>
             <img src='<?php echo $product['pass'] ?>' alt=''>
+            <i id="cross" class="far fa-times-circle"></i>
+            <input name="product[pass]" type="hidden" value="<?php echo $product['pass'] ?>">
           </div>
         </div>
         <div class="input">
           <label for="product[name]">商品名</label>
-          <input name="product[name]" type="text" placeholder="商品名" value="<?php echo $product['name'] ?>">
+          <input name="product[name]" type="text" placeholder="商品名" value="<?php echo $product['name'] ?>" required>
         </div>
         <div class=" input">
           <label for="product[price]">価格</label>
-          <input name="product[price]" type="text" placeholder="価格" min="0" class="half" value="<?php echo $product['price'] ?>">
+          <input name="product[price]" type="text" placeholder="価格" min="0" class="half" value="<?php echo $product['price'] ?>" required>
         </div>
         <div class="input">
           <label for="product[stock]">在庫数</label>
-          <input name="product[stock]" type="text" placeholder="在庫数" min="0" max="50" class="half" value="<?php echo $product['stock'] ?>">
+          <input name="product[stock]" type="text" placeholder="在庫数" min="0" max="50" class="half" value="<?php echo $product['stock'] ?>" required>
         </div>
         <div class="input">
           <label for="product[category]">商品カテゴリー</label>
-          <select name="product[category]">
+          <select name="product[category]" required>
             <option hidden value="">商品カテゴリーを選択してください</option>
             <option value="アウター">アウター</option>
             <option value="ボトムス">ボトムス</option>
@@ -62,7 +71,7 @@ $product = Product::getProductById($id);
         </div>
         <div class="input">
           <label for="product[gender]">対象カテゴリー</label>
-          <select name="product[gender]">
+          <select name="product[gender]" required>
             <option hidden value="">対象カテゴリーを選択してください</option>
             <option value="woman">Woman</option>
             <option value="man">Man</option>
@@ -73,28 +82,25 @@ $product = Product::getProductById($id);
           <div class="input back">
             <a href="./products_lists.php">キャンセル</a>
           </div>
-          <button type="submit" class="submit">再登録</button>
+          <button type="submit" class="submit">更新</button>
         </div>
         <input type="hidden" name="csrf_token" value="<?php echo h(setToken()) ?>">
       </fieldset>
     </form>
   </div>
   <script src="../js/transform_half.js"></script>
+  <script src="../js/set_selected.js"></script>
+  <script src="../js/toggleImg.js"></script>
   <script>
     const category = '<?=$product['category']?>';
     const gender = '<?=$product['gender']?>';
+    const target = document.getElementById('cross');
+    const existing = document.getElementById('existing');
+    const newest = document.getElementById('newest');
 
-    function setSelected(str) {
-      const ops = Array.from(document.getElementsByTagName('option'));
-      const thisOp = ops.find((op) => {
-        if (op.value == str) {
-          return op;
-        }
-      })
-      thisOp.setAttribute('selected', 'selected');
-    }
     setSelected(category);
     setSelected(gender);
+    toggleImg(target, existing, newest);
   </script>
 </body>
 

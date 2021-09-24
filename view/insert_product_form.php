@@ -45,7 +45,7 @@ if (!$result) {
         <div class="input">
           <label for="image">商品画像</label>
           <input name="image" type="file" placeholder="商品画像" accept="image/*" required>
-          <!-- <input name="MAX_FILE_SIZE" type="hidden" value="1048576" /> -->
+          <input name="MAX_FILE_SIZE" type="hidden" value="1048576" />
         </div>
         <div class="input">
           <label for="product[category]">商品カテゴリー</label>

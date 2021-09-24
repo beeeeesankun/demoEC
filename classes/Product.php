@@ -64,4 +64,13 @@ class Product
             return false;
         }
     }
+    /**
+    * 商品情報の登録
+    * @param array $product
+    * @return bool $result
+    */
+    public static function updateProduct($product)
+    {
+        return $result = false;
+    }
 }
