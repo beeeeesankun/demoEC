@@ -11,14 +11,14 @@ class UserLogic
     public static function createUser($userData)
     {
         $sql = 'INSERT INTO employee_table(name,email,pass) VALUES(?,?,?)';
-        $arr = [];
-        $arr[] = $userData['username'];
-        $arr[] = $userData['email'];
-        $arr[] = password_hash($userData['password'], PASSWORD_DEFAULT);
+        $params = [];
+        $params[] = $userData['username'];
+        $params[] = $userData['email'];
+        $params[] = password_hash($userData['password'], PASSWORD_DEFAULT);
 
         try {
             $stmt = dbc()->prepare($sql);
-            $result = $stmt->execute($arr);
+            $result = $stmt->execute($params);
             return $result;
         } catch (\Exception $e) {
             return $result = false;
@@ -106,11 +106,11 @@ class UserLogic
     public static function getUserByEmail($email)
     {
         $sql = 'SELECT * FROM employee_table WHERE email = ?';
-        $arr = [];
-        $arr[] = $email;
+        $params = [];
+        $params[] = $email;
         try {
             $stmt = dbc()->prepare($sql);
-            $stmt->execute($arr);
+            $stmt->execute($params);
 
             return $user = $stmt->fetch();
         } catch (\Exception $e) {

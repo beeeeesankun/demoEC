@@ -8,8 +8,8 @@ require_once '../classes/Product.php';
 if (!UserLogic::checkLogin()) {
     kick();
 }
-$id =  filter_input(INPUT_POST, 'id');
-$product = Product::getProductById($id);
+$_SESSION['id'] =  filter_input(INPUT_POST, 'id');
+$product = Product::getProductById($_SESSION['id']);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -31,7 +31,6 @@ $product = Product::getProductById($id);
     <form enctype="multipart/form-data" class="sign-in" action="../model/update_product.php" method="POST">
       <fieldset>
         <legend class="legend">商品編集</legend>
-        <input name="product[id]" type="hidden" value="<?php echo $id ?>">
         <div class="input">
           <label for="image">商品画像</label>
           <input id="newest" class='img-file' name="image" type="file" placeholder="画像" accept="image/*">

@@ -6,20 +6,21 @@ require_once '../classes/Product.php';
 
 $mes_h2 = 'Success';
 $err_mes_h2 = 'Failed';
-$mes_a = '<a href="../view/mypage.php">戻る</a>';
+$mes_a = '<a href="../view/products_lists.php">戻る</a>';
 $err_mes_a = '<a href="../view/products_lists.php">戻る</a>';
 
-// $token = filter_input(INPUT_POST, 'csrf_token');
-// // トークンが空||不一致で処理を中止
-// if (!isset($_SESSION['csrf_token']) || $token !== $_SESSION['csrf_token']) {
-//     exit('不正なリクエストです。');
-// }
-// unset($_SESSION['csrf_token']);
+$token = filter_input(INPUT_POST, 'csrf_token');
+// トークンが空||不一致で処理を中止
+if (!isset($_SESSION['csrf_token']) || $token !== $_SESSION['csrf_token']) {
+    exit('不正なリクエストです。');
+}
+unset($_SESSION['csrf_token']);
 
 $err_mes = null;
 $populate = [];
 
 $product = $_POST['product'];
+$populate['id'] = $_SESSION['id'];
 
 $file = $_FILES['image'];
 $filename = basename($file['name']);
@@ -40,7 +41,7 @@ strlen($product['gender']) > 0 ? $populate['gender'] = $product['gender'] : $err
 //画像のバリデーション
 
 if (is_uploaded_file($tmp_path)) {
-    echo 'call';
+    echo 'ca';
     if ($file_size > 1048576  || $file_err == 2) {
         $err_mes .= '・ファイルサイズは1MB未満にしてください<br><br>';
     }
@@ -49,27 +50,24 @@ if (is_uploaded_file($tmp_path)) {
     }
     if ($file_err == 0 && move_uploaded_file($tmp_path, $save_path)) {
         $populate['pass'] = $save_path;
+        $removeImg = basename($product['pass']);
     } else {
         $err_mes .=  '・ファイルアップロードにエラーが起きています。<br><br>';
     }
 } elseif ($file_err == 4) {
-    echo 'call';
     $populate['pass'] = $product['pass'];
 }
 
 if (isset($err_mes)) {
     $err_mes .= '・商品情報を正しく入力してください。<br><br>';
 }
-echo '<pre>';
-var_dump(is_uploaded_file($tmp_path));
-echo '</pre>';
-echo '<pre>';
-var_dump($populate);
-echo '</pre>';
 
 if (empty($err_mes)) {
     $result = Product::updateProduct($populate);
-    $result ? $mes_p = '・登録完了しました。': $err_mes .= '・登録に失敗しました。<br>管理者へお問い合わせください';
+    $result ? $mes_p = '・登録完了しました。<br>': $err_mes .= '・登録に失敗しました。<br>管理者へお問い合わせください';
+    if ($result && isset($removeImg)) {
+        unlink('../uploads/products-img/' . $removeImg) ? $mes_p .= '既存の画像は削除されました。' : $err_mes .= '既存の画像の削除に失敗しました。';
+    }
 } else {
     $err_mes .= '・画像の保存に失敗しました。<br>管理者へお問い合わせください。';
 }
