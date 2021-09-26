@@ -1,0 +1,85 @@
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+.alert {
+  border-radius: 10px;
+  background: #eee;
+  padding: 0px 20px;
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top 1000ms ease;
+}
+
+.alert.moved {
+  top: 20px;
+}
+.wrapper {
+  margin: 160px auto;
+}
+.dashboard {
+  background: #eee;
+  margin: 0%;
+  padding: 40px;
+}
+.lists {
+  list-style: none;
+  display: flex;
+  padding: 0 40px;
+}
+
+.mypage-icon {
+  font-size: 100px;
+}
+
+.child-lists {
+  transition: all 200ms ease;
+  opacity: 0;
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  width: 160px;
+}
+.lists-item {
+  padding: 20px;
+  position: relative;
+  color: #898989;
+  transition: all 200ms ease;
+}
+.lists-item:hover {
+  color: #333;
+}
+.lists-item:hover .child-lists {
+  padding: 20px 20px;
+  opacity: 1;
+  background: #efefef;
+  border: 1px solid #c8c8c8;
+}
+.child-lists > * {
+  padding: 10px;
+}
+
+.user-lists {
+  border-spacing: 20px 30px;
+  padding: 10px 20px;
+}
+.user-lists th {
+  text-align: left;
+}
+.user-lists td:last-child {
+  text-align: center;
+}
+.back {
+  text-align: right;
+}
+.list-img {
+  max-width: 120px;
+}
