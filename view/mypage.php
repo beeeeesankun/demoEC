@@ -70,7 +70,7 @@ $h2Txt = '管理画面';
           </a>
         </li>
         <li class="lists-item">
-          <a href="../public_html/">
+          <a href="../public_html/imaginary-vue/dist/">
             <div>
               <i class="mypage-icon fas fa-store-alt"></i>
             </div>
