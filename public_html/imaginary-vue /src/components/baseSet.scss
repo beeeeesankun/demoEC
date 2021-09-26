@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Noto+Sans+JP&display=swap');
+
+$main-txt: #0d0015;
+$font-en: 'Lora', serif;
+$font-ja: 'Cinzel', serif;
+
+@mixin btnStyle {
+  font-family: 'Cinzel', serif;
+  background-color: #04345a;
+  border-radius: 4.5rem;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+}
