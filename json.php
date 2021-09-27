@@ -17,11 +17,11 @@ while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
     $products[]=[
     'id'=>$row['id'],
     'name'=>$row['name'],
+    'src'=>$row['pass'],
+    'gender'=>$row['gender'],
+    'itemCategory'=>$row['category'],
     'price'=>$row['price'],
-    'stock'=>$row['stock'],
-    'pass'=>$row['pass'],
-    'category'=>$row['category'],
-    'gender'=>$row['gender']
+    'quantity'=>$row['stock'],
     ];
 }
 

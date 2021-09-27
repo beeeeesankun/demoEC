@@ -1,24 +1,24 @@
-// async function callApi() {
-//   const res = await fetch('../../../../json.php');
+async function callApi() {
+  const res = await fetch('../../../../json.php');
 
-//   const product = await res.json();
-//   console.log(product);
-//   return product;
-// }
+  const product = await res.json();
+  console.log(product);
+  return product;
+}
 
-// const _products = callApi();
+const _products = callApi();
 
-const _products = [
-  {
-    id: 1,
-    name: 'チェスターコート',
-    src: require('@/assets/outer-women/outer-women-item1.jpg'),
-    gender: 'women',
-    itemCategory: 'アウター',
-    price: '3980',
-    quantity: 1,
-  },
-];
+// const _products = [
+//   {
+//     id: 1,
+//     name: 'チェスターコート',
+//     src: require('@/assets/outer-women/outer-women-item1.jpg'),
+//     gender: 'women',
+//     itemCategory: 'アウター',
+//     price: '3980',
+//     quantity: 1,
+//   },
+// ];
 
 export default {
   getProducts(cb) {
