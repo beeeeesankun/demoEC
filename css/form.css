@@ -15,9 +15,9 @@ a:active {
   display: block;
   position: absolute;
   top: 0px;
-  left: 10px;
-  width: 20px;
-  height: 2px;
+  left: 1rem;
+  width: 2rem;
+  height: 0.2rem;
   background: #ff7052;
 }
 
@@ -25,11 +25,11 @@ a:active {
   content: "";
   display: block;
   position: absolute;
-  top: -6px;
-  left: 15px;
-  width: 10px;
-  height: 10px;
-  border: 2px solid;
+  top: -0.6rem;
+  left: 1.5rem;
+  width: 1rem;
+  height: 1rem;
+  border: 0.2rem solid;
   transform: rotate(-135deg);
   border-color: transparent transparent #ff7052 #ff7052;
 }
@@ -66,11 +66,11 @@ body {
 .login {
   position: relative;
   top: 50%;
-  width: 250px;
+  width: 25rem;
   display: table;
-  margin: -150px auto 0 auto;
+  margin: -15rem auto 0 auto;
   background: #fff;
-  border-radius: 4px;
+  border-radius: 0.4rem;
 }
 
 .legend {
@@ -78,9 +78,9 @@ body {
   width: 100%;
   display: block;
   background: #ff7052;
-  padding: 15px;
+  padding: 1.5rem;
   color: #fff;
-  font-size: 20px;
+  font-size: 2rem;
 }
 
 .legend:after {
@@ -88,7 +88,7 @@ body {
   background-image: url(http://simpleicon.com/wp-content/uploads/multy-user.png);
   background-size: 100px 100px;
   background-repeat: no-repeat;
-  background-position: 160px -16px;
+  background-position: 16rem -1.6rem;
   opacity: 0.06;
   top: 0;
   left: 0;
@@ -100,20 +100,20 @@ body {
 .input {
   position: relative;
   width: 90%;
-  margin: 15px auto;
+  margin: 1.5rem auto;
 }
 
 .input span {
   position: absolute;
   display: block;
   color: #d4d4d4;
-  left: 8px;
+  left: 0.8rem;
   top: 0px;
-  font-size: 25px;
+  font-size: 2.5rem;
 }
 
 .input span i {
-  width: 25px;
+  width: 2.5rem;
   opacity: 1;
   transition: opacity 300ms ease;
 }
@@ -124,7 +124,7 @@ body {
 
 .input input {
   width: 100%;
-  padding: 10px 5px 10px 40px;
+  padding: 1rem 0.5rem 1rem 4rem;
   display: block;
   border: 1px solid #ededed;
   border-radius: 4px;
@@ -133,23 +133,23 @@ body {
 }
 
 .input input:focus {
-  padding: 10px 5px 10px 10px;
+  padding: 1rem 0.5rem 1rem 1rem;
   outline: 0;
   border-color: #ff7052;
 }
 
 .submit {
-  width: 45px;
-  height: 45px;
+  width: 4.5rem;
+  height: 4.5rem;
   display: block;
-  margin: 0 auto -15px auto;
+  margin: 0 auto -1.5rem auto;
   background: #fff;
   border-radius: 100%;
   border: 1px solid #ff7052;
   color: #ff7052;
-  font-size: 24px;
+  font-size: 2.4rem;
   cursor: pointer;
-  box-shadow: 0px 0px 0px 7px #fff;
+  box-shadow: 0px 0px 0px 0.7rem #fff;
   transition: 0.2s ease-out;
 }
 
@@ -163,18 +163,18 @@ body {
 .err-mes {
   color: #666;
   width: 80%;
-  margin: 10px auto;
+  margin: 1rem auto;
   font-size: 90%;
 }
 
 .sign-in {
   position: relative;
   top: 50%;
-  width: 300px;
+  width: 30rem;
   display: table;
-  margin: 200px auto 0 auto;
+  margin: 20rem auto 0 auto;
   background: #fff;
-  border-radius: 4px;
+  border-radius: 0.4rem;
 }
 
 .back {
