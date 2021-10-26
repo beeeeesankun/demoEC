@@ -1,5 +1,7 @@
 <?php
 require_once './functions/dbConnect.php';
+// これが無いと外部サーバーからAPIを利用できない
+header('Access-Control-Allow-Origin: *');
 
 mb_language('uni');
 mb_internal_encoding('utf-8'); //内部文字コードを変更
@@ -26,5 +28,5 @@ while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
 }
 
 //jsonとして出力
-header('Content-type: application/json');
-echo json_encode($products);
+$json = json_encode($products, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+echo $json;
