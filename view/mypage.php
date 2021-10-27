@@ -71,7 +71,7 @@ $h2Txt = '管理画面';
           </a>
         </li>
         <li class="lists-item">
-          <a href="../public_html/">
+          <a href="https://fukabeakihiro.com/vue_shop/">
             <div>
               <i class="mypage-icon fas fa-store-alt"></i>
             </div>
